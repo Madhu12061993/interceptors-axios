@@ -6,15 +6,21 @@ import axios from 'axios'
 
 axios.defaults.baseURL = 'https://dummyjson.com';
 axios.defaults.timeout = 5000;
-axios.defaults.headers = {
-  'Content-Type': 'application/json',
-  'Authorization': 'Bearer auth_token'
-};
+// axios.defaults.headers = {
+//   'Content-Type': 'application/json',
+//   'Authorization': 'Bearer auth_token'
+// };
 
 axios.interceptors.request.use( (config) => {
-  console.log(config);
-  return {...config , headers : {...config.headers , Authorization: 'Bearer toke'}};
-})
+  // console.log(config);
+  return {...config , headers : {...config.headers , Authorization: 'Bearer toke'},
+};
+},(err) => console.log(err));
+axios.interceptors.response.use((response) => {
+  console.log(response);
+  return response;
+  
+} , (err) => console.log(err));
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />
