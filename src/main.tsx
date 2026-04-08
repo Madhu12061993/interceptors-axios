@@ -13,7 +13,7 @@ axios.defaults.headers = {
 
 axios.interceptors.request.use( (config) => {
   console.log(config);
-  return config;
+  return {...config , headers : {...config.headers , Authorization: 'Bearer toke'}};
 })
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
