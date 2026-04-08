@@ -1,6 +1,5 @@
-// import axios from "axios";
+import axios from "axios";
 import { useEffect, useState } from "react"
-import { Intance } from "../axios/Intance";
 
 
 interface State {
@@ -21,8 +20,7 @@ const ListOfProducts = () => {
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const res = await Intance.get('/products',{
-                    headers:{
+                const res = await axios.get('/products',{headers:{
                     'Authorization': `Bearer ${token}`,
                 },
             });
