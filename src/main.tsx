@@ -18,7 +18,7 @@ axios.interceptors.request.use( (config) => {
 },(err) => console.log(err));
 axios.interceptors.response.use((response) => {
   console.log(response);
-  return response;
+  return {...response , data:{resp:response.data,title:'api interceptors'}};
   
 } , (err) => console.log(err));
 createRoot(document.getElementById('root')!).render(

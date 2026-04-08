@@ -25,7 +25,7 @@ const ListOfProducts = () => {
                 },
             });
                 if (res.status === 200) {
-                    setstate(res.data.products);
+                    setstate(res.data.resp.products);
                 } else if (res.status === 404) {
                     console.log('products not found');
                 }
