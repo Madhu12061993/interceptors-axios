@@ -9,6 +9,7 @@ interface State {
 }
 const ListOfProducts = () => {
     const [state, setstate] = useState<State[]>([]);
+    const token = 'auth_token';
     // promise using then
     // useEffect(() => {
     //     axios.get('https://dummyjson.com/products')
@@ -19,7 +20,10 @@ const ListOfProducts = () => {
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const res = await axios.get('https://dummyjson.com/products');
+                const res = await axios.get('https://dummyjson.com/products',{headers:{
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
                 if (res.status === 200) {
                     setstate(res.data.products);
                 } else if (res.status === 404) {
