@@ -16,17 +16,21 @@ const ListOfProducts = () => {
     //         .catch((error) => console.log(error));
     // }, []);
     // promise using async await
-     useEffect(() => {
+    useEffect(() => {
         const getProducts = async () => {
             try {
-          const res = await axios.get('https://dummyjson.com/products');
-          setstate(res.data.products);
+                const res = await axios.get('https://dummyjson.com/products');
+                if (res.status === 200) {
+                    setstate(res.data.products);
+                } else if (res.status === 404) {
+                    console.log('products not found');
+                }
+        //   console.log(res);
             }
-            catch(e) {
+            catch (e) {
                 console.log(e);
             }
-           
-        };
+        };        
         getProducts();
     }, []);
     return (
@@ -36,11 +40,11 @@ const ListOfProducts = () => {
             </div>
             {state.map((product, index) => (
                 <div key={index}>
-                <div>{product.title}</div>
-                <div>{product.price}</div>
+                    <div>{product.title}</div>
+                    <div>{product.price}</div>
 
-            </div>
-        ))}
+                </div>
+            ))}
         </>
     )
 }
