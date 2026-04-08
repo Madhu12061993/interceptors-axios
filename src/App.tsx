@@ -1,10 +1,12 @@
 import './App.css'
-import ListOfProducts from './component/ListOfProducts'
+import AddProducts from './component/AddProducts'
+// import ListOfProducts from './component/ListOfProducts'
 
 function App() {
  return <div>
   <h3>React Axios</h3>
-  <ListOfProducts/>
+  {/* <ListOfProducts/> */}
+  <AddProducts/>
  </div>
 }
 export default App
