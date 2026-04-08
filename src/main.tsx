@@ -9,7 +9,12 @@ axios.defaults.timeout = 5000;
 axios.defaults.headers = {
   'Content-Type': 'application/json',
   'Authorization': 'Bearer auth_token'
-}
+};
+
+axios.interceptors.request.use( (config) => {
+  console.log(config);
+  return config;
+})
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />
